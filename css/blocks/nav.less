@@ -1,0 +1,81 @@
+//main: ../style.less
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+
+    @media @mobile {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 1000;
+        display: none;
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+      
+        &.show {
+            display: flex;
+        }
+    }
+}
+
+.nav__link {
+    
+    position: relative;
+
+    margin-left: 2rem;
+    font-size: .93rem;
+    color: @black;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+
+ 
+
+    &::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: @black;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        z-index: 1;
+
+        transition: width .2s linear;
+    }
+
+    &:hover:not(.nav__link--btn) {
+        &::after {
+            width: 100%;
+        }
+    }
+
+    // Modificator
+
+    &--btn {
+    padding: 0.66rem 2rem;
+    border: 2px solid @black;
+    border-radius: 20px;
+    transition: background .2s ease, color .2s ease;
+
+    &:hover {
+        background-color: @black;
+        color: #fff;
+    }
+  }
+
+  @media @mobile {
+    width: 100%;
+    margin-left: 0;
+    padding: .5rem 1rem;
+  }
+
+    
+}
